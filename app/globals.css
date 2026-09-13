@@ -9,17 +9,17 @@ html {
 body {
   background-color: #fdf6e3;
   color: #573a27;
-  font-family: "Nunito", sans-serif;
+  font-family: var(--font-nunito), sans-serif;
   overflow-x: hidden;
   margin: 0;
 }
 
 .font-bubbly {
-  font-family: "Fredoka", sans-serif;
+  font-family: var(--font-fredoka), sans-serif;
 }
 
 .font-comic {
-  font-family: "Patrick Hand", cursive;
+  font-family: var(--font-patrick), cursive;
 }
 
 /* Custom borders */
