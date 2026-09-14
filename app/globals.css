@@ -1782,7 +1782,7 @@ button {
 
   line-height: 0.9;
 
-  letter-spacing: 0.075em;
+  letter-spacing: -0.075em;
 
   font-weight: 900;
 
@@ -1791,9 +1791,6 @@ button {
   text-shadow: 6px 6px 0 var(--line);
 }
 
-.final-cta h2 br {
-  display: none;
-}
 
 .final-cta h2 span {
   display: block;
