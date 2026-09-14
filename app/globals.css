@@ -3722,3 +3722,287 @@ button {
     font-size: 26px;
   }
 }
+/* =========================================================
+   HOMEPAGE — TEAM / FAQ / CODE OF CONDUCT
+   ========================================================= */
+
+.home-faq-explore {
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 2px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.home-faq-explore p {
+  margin: 0;
+  font-family: var(--hand);
+  font-size: 22px;
+}
+
+.home-faq-button {
+  display: inline-block;
+  padding: 12px 17px;
+  background: var(--yellow);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--line);
+  font-family: var(--space);
+  font-size: 10px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.home-faq-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
+/* TEAM */
+
+.home-team-section {
+  width: min(1180px, calc(100% - 32px));
+  margin: 120px auto 0;
+  padding: 65px;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 70px;
+  align-items: center;
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 8px 8px 0 var(--line);
+}
+
+.home-team-label {
+  display: inline-block;
+  margin: 0 0 15px;
+  padding: 6px 10px;
+  background: var(--yellow);
+  border: 2px solid var(--line);
+  transform: rotate(-2deg);
+  font-family: var(--hand);
+  font-size: 17px;
+}
+
+.home-team-copy h2 {
+  margin: 0;
+  font-family: var(--space);
+  font-size: clamp(55px, 8vw, 90px);
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+  font-weight: 950;
+}
+
+.home-team-copy h2 span {
+  color: var(--orange);
+  text-shadow: 4px 4px 0 var(--line);
+}
+
+.home-team-copy > p {
+  max-width: 520px;
+  margin: 28px 0;
+  font-family: var(--dm);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.home-team-button {
+  display: inline-block;
+  padding: 14px 20px;
+  background: var(--orange);
+  color: var(--ink);
+  border: 3px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 5px 5px 0 var(--line);
+  font-family: var(--space);
+  font-size: 11px;
+  font-weight: 950;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.home-team-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+.home-team-stack {
+  min-height: 380px;
+  position: relative;
+}
+
+.home-team-card {
+  width: 78%;
+  min-height: 145px;
+  padding: 22px;
+  position: absolute;
+  border: 3px solid var(--line);
+  box-shadow: 6px 6px 0 var(--line);
+}
+
+.home-team-card span {
+  font-family: var(--space);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.home-team-card strong {
+  display: block;
+  margin-top: 20px;
+  font-family: var(--space);
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.home-team-card p {
+  margin: 8px 0 0;
+  font-family: var(--hand);
+  font-size: 18px;
+}
+
+.home-team-card-one {
+  top: 0;
+  left: 5%;
+  background: var(--orange);
+  transform: rotate(-4deg);
+}
+
+.home-team-card-two {
+  top: 115px;
+  right: 0;
+  background: var(--yellow);
+  transform: rotate(4deg);
+}
+
+.home-team-card-three {
+  bottom: 0;
+  left: 9%;
+  background: var(--green);
+  transform: rotate(-2deg);
+}
+
+/* CODE OF CONDUCT */
+
+.home-code-section {
+  width: min(1000px, calc(100% - 32px));
+  margin: 100px auto 0;
+  padding: 35px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 7px 7px 0 var(--orange);
+}
+
+.home-code-icon {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  background: var(--yellow);
+  color: var(--ink);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.home-code-kicker {
+  margin: 0 0 8px;
+  font-family: var(--space);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.home-code-section h3 {
+  margin: 0;
+  font-family: var(--space);
+  font-size: clamp(28px, 4vw, 43px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  font-weight: 950;
+}
+
+.home-code-section h3 span {
+  color: var(--yellow);
+}
+
+.home-code-section > div:last-child > p {
+  max-width: 650px;
+  margin: 18px 0;
+  font-family: var(--dm);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.home-code-section a {
+  color: var(--yellow);
+  font-family: var(--space);
+  font-size: 10px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.home-code-section a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .home-team-section {
+    grid-template-columns: 1fr;
+    padding: 45px 28px;
+    gap: 50px;
+  }
+
+  .home-team-stack {
+    min-height: 390px;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-faq-explore {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-team-section {
+    width: calc(100% - 24px);
+    padding: 40px 22px;
+  }
+
+  .home-team-copy h2 {
+    font-size: 55px;
+  }
+
+  .home-team-stack {
+    min-height: 350px;
+  }
+
+  .home-team-card {
+    width: 84%;
+  }
+
+  .home-team-card strong {
+    font-size: 20px;
+  }
+
+  .home-code-section {
+    width: calc(100% - 24px);
+    padding: 28px 22px;
+    flex-direction: column;
+  }
+}
