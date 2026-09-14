@@ -1,60 +1,31 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-
-const steps = [
-  {
-    number: "01",
-    title: "SPARK",
-    text: "Start with an idea or prompt. Dream big, then pick something you can actually ship.",
-  },
-  {
-    number: "02",
-    title: "SHIP",
-    text: "Turn the idea into a prototype using web, mobile, AI, hardware, or anything you love.",
-  },
-  {
-    number: "03",
-    title: "LEVEL UP",
-    text: "Learn from workshops and mentors while you build, debug, experiment and improve.",
-  },
-  {
-    number: "04",
-    title: "FLEX",
-    text: "Demo your project live, publish it online, and leave with new skills and connections.",
-  },
-];
+import { useEffect, useState } from "react";
 
 const faqs = [
   {
-    question: "Can I join if I'm a beginner?",
-    answer:
-      "Absolutely! Falling Sun is beginner to elite friendly. Mentors and zero-judgment zones are available to help you build your first project.",
+    q: "I've never coded before. Can I join?",
+    a: "Absolutely. Falling Sun is beginner-friendly. We'll have mentors, resources, and plenty of people around to help you get unstuck.",
   },
   {
-    question: "Can I work in teams?",
-    answer:
-      "Yes! You can participate solo or form a team of up to 4 members.",
+    q: "How big can my team be?",
+    a: "Teams can have up to 4 people. You can also build solo if that's your thing.",
   },
   {
-    question: "Am I eligible?",
-    answer:
-      "Falling Sun is exclusively for high schoolers and teen hackers ages 13–18. Participants under 18 require signed parent/guardian consent.",
+    q: "How old do I need to be?",
+    a: "Falling Sun is for students aged 13–18.",
   },
   {
-    question: "Is this free?",
-    answer:
-      "100% free. Venue access, Wi-Fi, hardware kits, meals, and merch are completely covered.",
+    q: "Does it cost anything?",
+    a: "Nope. Falling Sun is completely free.",
   },
   {
-    question: "What are the project requirements?",
-    answer:
-      "Projects must be original work created during the hackathon. Source code must be on a public GitHub. You retain 100% ownership.",
+    q: "What can I build?",
+    a: "Pretty much anything you can imagine: websites, games, apps, hardware projects, weird experiments, creative tools, or something nobody has thought of yet.",
   },
   {
-    question: "Can I use AI?",
-    answer:
-      "Yes, but AI-assisted work is limited to 40% of the project. Descriptions and submissions must be written by the participants themselves.",
+    q: "Can I use AI?",
+    a: "Yes. AI tools are allowed. We care about what you create, what you learn, and whether you understand and can explain your project.",
   },
 ];
 
@@ -62,7 +33,28 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!email.trim()) return;
@@ -71,250 +63,542 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden">
-      {/* NAVIGATION */}
-      <header className="topbar">
-        <div className="wrap">
-          <nav className="nav">
-            <a href="#top" className="brand">
-              <span className="brand-mark">☀</span>
-              <span>FALLING SUN</span>
-            </a>
+    <div className="site-shell">
+      {/* =========================================================
+          NAVBAR
+      ========================================================== */}
+      <header className="topbar-wrap">
+        <nav className="topbar">
+          <a href="#" className="brand" aria-label="Falling Sun home">
+            <span className="brand-sun">
+              <span />
+            </span>
 
-            <div className="navlinks">
-              <a href="#about">ABOUT</a>
-              <a href="#how">HOW IT WORKS</a>
-              <a href="#faq">FAQ</a>
+            <span className="brand-text">
+              FALLING
+              <strong>SUN</strong>
+            </span>
+          </a>
 
-              <a href="#signup" className="nav-cta">
-                SIGN UP →
-              </a>
-            </div>
-          </nav>
-        </div>
+          <div className="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#adventure">HOW IT WORKS</a>
+            <a href="#faq">FAQ</a>
+          </div>
+
+          <a href="#signup" className="nav-cta">
+            SIGN UP <span>↗</span>
+          </a>
+        </nav>
       </header>
 
       <main>
-        {/* HERO */}
-        <section className="hero" id="top">
-          <div className="hero-overlay" />
+        {/* =========================================================
+            HERO
+        ========================================================== */}
+        <section className="hero" id="signup">
+          <div className="hero-bg" />
 
-          <div className="wrap hero-inner">
-            <div className="eyebrow">
+          <div className="hero-noise" />
+
+          <div className="hero-sun-glow" />
+
+          <div className="hero-orbit orbit-one" />
+          <div className="hero-orbit orbit-two" />
+
+          <div className="hero-star star-one">✦</div>
+          <div className="hero-star star-two">✶</div>
+          <div className="hero-star star-three">✦</div>
+
+          <div className="hero-content">
+            <div className="eyebrow hero-eyebrow">
+              <span>✦</span>
               STUDENT HACKATHON · DELHI-NCR
             </div>
 
-            <h1>
-              FALLING
-              <br />
-              SUN
-            </h1>
+            <div className="hero-title-wrap">
+              <span className="hero-side-note">EST. 2026</span>
 
-            <p className="hero-copy">
-              India&apos;s under-19 retro-tech hackathon. Bring an idea, grab
-              your friends, and build something awesome in 24 hours.
+              <h1 className="hero-title">
+                <span>FALLING</span>
+                <span className="hero-title-sun">SUN</span>
+              </h1>
+
+              <span className="hero-side-note hero-side-note-right">
+                24 HOURS
+              </span>
+            </div>
+
+            <p className="hero-description">
+              India&apos;s under-19 retro-tech hackathon.
+              <br />
+              Bring an idea, grab your friends, and
+              <br className="desktop-only" />
+              build something awesome in 24 hours.
             </p>
 
-            <form className="signup" onSubmit={handleSubmit}>
-              <input
-                type="email"
-                aria-label="Email address"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                  setSubmitted(false);
-                }}
-                required
-              />
+            <div className="hero-actions">
+              <a href="#about" className="big-button orange-button">
+                EXPLORE THE SUN <span>↓</span>
+              </a>
 
-              <button className="button" type="submit">
-                {submitted ? "YOU'RE IN! ✓" : "START NOW →"}
-              </button>
-            </form>
+              <a href="#adventure" className="big-button white-button">
+                HOW IT WORKS <span>↗</span>
+              </a>
+            </div>
 
             <div className="hero-note">
-              13–18 · BEGINNER FRIENDLY · 100% FREE
+              <span>13–18</span>
+              <i />
+              BEGINNER FRIENDLY
+              <i />
+              100% FREE
             </div>
+          </div>
+
+          <div className="scroll-cue">
+            <span>SCROLL TO DISCOVER</span>
+            <div className="scroll-line" />
+          </div>
+
+          <div className="hero-sticker">
+            <span>BUILD</span>
+            <strong>YOUR</strong>
+            <span>THING!</span>
+            <b>↘</b>
           </div>
         </section>
 
-        {/* ABOUT */}
-        <section className="section" id="about">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="section-kicker">so... what&apos;s this?</div>
+        {/* =========================================================
+            MARQUEE
+        ========================================================== */}
+        <section className="marquee">
+          <div className="marquee-track">
+            <span>BUILD SOMETHING WEIRD</span>
+            <b>✦</b>
+            <span>SHIP IT</span>
+            <b>✦</b>
+            <span>MAKE FRIENDS</span>
+            <b>✦</b>
+            <span>BREAK THE INTERNET</span>
+            <b>✦</b>
+            <span>BUILD SOMETHING WEIRD</span>
+            <b>✦</b>
+            <span>SHIP IT</span>
+            <b>✦</b>
+          </div>
+        </section>
 
-              <h2>
-                BUILD. LEARN.
-                <br />
-                SHIP IT.
-              </h2>
+        {/* =========================================================
+            VIDEO
+        ========================================================== */}
+        <section className="video-section">
+          <div className="section-wrap">
+            <div className="video-intro reveal">
+              <div>
+                <p className="hand-kicker">the falling sun feeling</p>
+                <h2>
+                  THIS ISN&apos;T
+                  <br />
+                  <span>JUST A HACKATHON.</span>
+                </h2>
+              </div>
 
-              <p className="lead">
-                Falling Sun is a 24-hour, under-19 hackathon happening live in
-                Delhi-NCR. Build with hardware, web, mobile, AI, or whatever
-                weird idea you want to turn into a real prototype.
+              <p className="video-intro-copy">
+                It&apos;s one night of ideas, caffeine, chaos, friendship,
+                debugging, and that magical moment when your weird idea
+                actually works.
               </p>
             </div>
 
-            <div className="intro">
-              <article className="paper-card orange">
-                <div className="stamp">THE MISSION</div>
+            <div className="video-frame reveal">
+              <div className="video-tape tape-left">FALLING SUN</div>
+              <div className="video-tape tape-right">WATCH THIS</div>
 
-                <div className="big-stat">24H</div>
+              <div className="video-window">
+                <video
+                  src="/fallingsun.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
 
-                <h3>Make something real.</h3>
+                <div className="video-overlay">
+                  <div className="video-corner top-left">FS / 001</div>
+                  <div className="video-corner top-right">24H</div>
+                  <div className="video-corner bottom-left">
+                    DELHI-NCR / INDIA
+                  </div>
+                  <div className="video-corner bottom-right">REC ●</div>
 
-                <p>
-                  Bring your idea to life during an intense sprint with
-                  mentors, workshops, hardware and resources funded by us.
-                </p>
-              </article>
+                  <div className="video-play-mark">✦</div>
+                </div>
+              </div>
 
-              <article className="paper-card green">
-                <div className="stamp">WHO&apos;S INVITED?</div>
-
-                <div className="big-stat">13–18</div>
-
-                <h3>From first project to advanced builds.</h3>
-
-                <p>
-                  No previous hackathon experience needed. Beginners and
-                  experienced builders are both welcome.
-                </p>
-              </article>
+              <div className="video-caption">
+                <span>01 — AFTER DARK</span>
+                <strong>MAKE SOMETHING THAT DIDN&apos;T EXIST YESTERDAY.</strong>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* HOW IT WORKS */}
-        <section className="section" id="how">
-          <div className="wrap">
+        {/* =========================================================
+            ABOUT
+        ========================================================== */}
+        <section className="section about-section" id="about">
+          <div className="section-wrap">
+            <div className="section-heading reveal">
+              <div>
+                <p className="hand-kicker">so... what&apos;s this?</p>
+                <h2>
+                  BUILD.
+                  <br />
+                  <span>LEARN.</span>
+                  <br />
+                  SHIP IT.
+                </h2>
+              </div>
+
+              <div className="heading-side">
+                <span>01 / ABOUT</span>
+                <p>
+                  A 24-hour creative coding adventure for the next generation
+                  of builders.
+                </p>
+              </div>
+            </div>
+
+            <div className="about-grid">
+              <article className="about-card about-card-main reveal">
+                <div className="card-number">01</div>
+
+                <div className="card-sun">
+                  <span />
+                </div>
+
+                <p className="card-kicker">THE MISSION</p>
+
+                <h3>
+                  Make the thing
+                  <br />
+                  you&apos;ve been
+                  <br />
+                  thinking about.
+                </h3>
+
+                <p className="card-body">
+                  Falling Sun is a place to stop overthinking and start
+                  building. You bring the idea. We bring the people, energy,
+                  mentors, and excuse to stay up way too late making it real.
+                </p>
+
+                <span className="card-arrow">↗</span>
+              </article>
+
+              <div className="about-stack">
+                <article className="stat-card orange-card reveal">
+                  <span className="stat-label">TIME TO BUILD</span>
+                  <strong>24<span>H</span></strong>
+                  <p>One ridiculous, wonderful day.</p>
+                  <div className="scribble">NO SLEEP :)</div>
+                </article>
+
+                <article className="stat-card green-card reveal">
+                  <span className="stat-label">WHO CAN JOIN</span>
+                  <strong>13–18</strong>
+                  <p>
+                    Students from Delhi-NCR and beyond. Beginners absolutely
+                    welcome.
+                  </p>
+                  <div className="green-stamp">OPEN<br />TO ALL</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            BIG IMAGE BREAK
+        ========================================================== */}
+        <section className="image-break">
+          <div className="image-break-bg" />
+
+          <div className="image-break-content reveal">
+            <span>THE SUN IS FALLING.</span>
+            <strong>ARE YOU BUILDING?</strong>
+            <a href="#adventure">LET&apos;S GO →</a>
+          </div>
+
+          <div className="image-break-number">02</div>
+        </section>
+
+        {/* =========================================================
+            HOW IT WORKS
+        ========================================================== */}
+        <section className="adventure" id="adventure">
+          <div className="adventure-bg-word">CAMP!</div>
+
+          <div className="section-wrap">
+            <div className="adventure-heading reveal">
+              <div>
+                <p className="hand-kicker cream-kicker">your adventure</p>
+                <h2>
+                  FROM
+                  <br />
+                  <span>ZERO</span>
+                  <br />
+                  TO SHIPPED.
+                </h2>
+              </div>
+
+              <div className="adventure-copy">
+                <span>02 / HOW IT WORKS</span>
+                <p>
+                  No lectures. No boring slides. Just a room full of curious
+                  people building things together.
+                </p>
+              </div>
+            </div>
+
             <div className="steps">
-              <div className="section-kicker yellow-kicker">
-                your adventure
-              </div>
+              <article className="step step-one reveal">
+                <span className="step-number">01</span>
+                <div className="step-icon">✦</div>
+                <p>SPARK</p>
+                <h3>GET<br />AN IDEA.</h3>
+                <span className="step-note">
+                  Something weird is usually better.
+                </span>
+              </article>
 
-              <h2>HOW IT WORKS</h2>
+              <article className="step step-two reveal">
+                <span className="step-number">02</span>
+                <div className="step-icon">↗</div>
+                <p>SHIP</p>
+                <h3>BUILD<br />THE THING.</h3>
+                <span className="step-note">
+                  Code. Design. Experiment. Break stuff.
+                </span>
+              </article>
 
-              <div className="step-grid">
-                {steps.map((step) => (
-                  <article className="step" key={step.number}>
-                    <div className="step-num">{step.number}</div>
+              <article className="step step-three reveal">
+                <span className="step-number">03</span>
+                <div className="step-icon">★</div>
+                <p>LEVEL UP</p>
+                <h3>ASK.<br />LEARN.</h3>
+                <span className="step-note">
+                  Mentors and friends have your back.
+                </span>
+              </article>
 
-                    <h3>{step.title}</h3>
+              <article className="step step-four reveal">
+                <span className="step-number">04</span>
+                <div className="step-icon">☀</div>
+                <p>FLEX</p>
+                <h3>SHOW<br />IT OFF.</h3>
+                <span className="step-note">
+                  Demo day. Big energy. Bigger bragging rights.
+                </span>
+              </article>
+            </div>
 
-                    <p>{step.text}</p>
-                  </article>
-                ))}
-              </div>
+            <div className="adventure-footer reveal">
+              <span>THAT&apos;S IT.</span>
+              <strong>NOW MAKE SOMETHING.</strong>
+              <span>→</span>
             </div>
           </div>
         </section>
 
-        {/* LETTER / ABOUT */}
-        <section className="section">
-          <div className="wrap letter">
-            <div
-              className="letter-art"
-              aria-label="Falling Sun artwork"
-              role="img"
-            />
+        {/* =========================================================
+            LETTER
+        ========================================================== */}
+        <section className="letter-section">
+          <div className="section-wrap">
+            <div className="letter-grid">
+              <div className="letter-art reveal">
+                <div className="letter-art-image" />
 
-            <article className="letter-copy">
-              <h2>
-                MAKE SOMETHING
-                <br />
-                YOU&apos;RE PROUD OF.
-              </h2>
+                <div className="letter-art-overlay">
+                  <span>DEAR</span>
+                  <strong>HACKER</strong>
+                  <small>WE SAVED YOU A SEAT.</small>
+                </div>
 
-              <p>
-                You don&apos;t need to be an expert hacker. You just need an
-                idea and the willingness to make it real. Find teammates, learn
-                something new, get unstuck with mentors, and ship before
-                sunrise.
-              </p>
-
-              <p>
-                As long as you build something during the 24 hours, you&apos;ll
-                get a certificate and cool merch.
-              </p>
-
-              <div className="scribble">
-                let&apos;s make something weird ✦
+                <div className="letter-sticker">✦<br />HELLO<br />WORLD</div>
               </div>
-            </article>
+
+              <article className="letter-paper reveal">
+                <span className="letter-label">DEAR HACKER,</span>
+
+                <h2>
+                  YOUR NEXT
+                  <br />
+                  <span>BIG IDEA</span>
+                  <br />
+                  STARTS HERE.
+                </h2>
+
+                <p>
+                  Maybe you&apos;ve been coding for years. Maybe you&apos;ve
+                  never opened a code editor. Maybe you have an idea at 2AM
+                  that you can&apos;t stop thinking about.
+                </p>
+
+                <p>
+                  That&apos;s exactly who Falling Sun is for.
+                </p>
+
+                <p>
+                  Come with your friends. Come alone. Come with a half-baked
+                  idea and a laptop at 2% battery. We&apos;ll figure out the
+                  rest together.
+                </p>
+
+                <div className="signature">
+                  <span>see you after sunset,</span>
+                  <strong>— the falling sun team</strong>
+                </div>
+              </article>
+            </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="section" id="faq">
-          <div className="wrap faq">
-            <div className="section-head">
-              <div className="section-kicker">
-                questions, questions...
-              </div>
-
-              <h2>FAQ</h2>
+        {/* =========================================================
+            FAQ
+        ========================================================== */}
+        <section className="faq-section" id="faq">
+          <div className="section-wrap faq-wrap">
+            <div className="faq-heading reveal">
+              <p className="hand-kicker">you probably have questions</p>
+              <h2>
+                ASK
+                <br />
+                <span>AWAY.</span>
+              </h2>
+              <div className="faq-doodle">✦</div>
             </div>
 
             <div className="faq-list">
-              {faqs.map((faq) => (
-                <details key={faq.question} className="faq-item">
+              {faqs.map((faq, index) => (
+                <details
+                  className="faq-item reveal"
+                  key={faq.q}
+                  open={index === 0}
+                >
                   <summary>
-                    <span>{faq.question}</span>
-                    <b>+</b>
+                    <span className="faq-index">
+                      0{index + 1}
+                    </span>
+                    <strong>{faq.q}</strong>
+                    <span className="faq-plus">+</span>
                   </summary>
 
-                  <p>{faq.answer}</p>
+                  <div className="faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
                 </details>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FINAL CTA */}
-        <section className="section">
-          <div className="wrap">
-            <div className="final-cta">
-              <div className="sparkle sparkle-one">✦</div>
-              <div className="sparkle sparkle-two">✦</div>
-
-              <div className="section-kicker white-kicker">ready?</div>
-
-              <h2>
-                COME BUILD
-                <br />
-                WITH US.
-              </h2>
-
-              <p>
-                Grab your friends. Bring your laptop. Leave with a project.
-              </p>
-
-              <a href="#top" className="button final-button">
-                SIGN UP →
-              </a>
-            </div>
+        {/* =========================================================
+            FINAL CTA
+        ========================================================== */}
+        <section className="final-cta">
+          <div className="cta-stars">
+            <span>✦</span>
+            <span>✶</span>
+            <span>✦</span>
+            <span>✷</span>
           </div>
+
+          <div className="final-cta-inner reveal">
+            <p className="hand-kicker dark-kicker">the sun is setting...</p>
+
+            <h2>
+              COME
+              <br />
+              BUILD
+              <br />
+              <span>WITH US.</span>
+            </h2>
+
+            <p>
+              Bring a laptop.
+              <br />
+              Bring an idea.
+              <br />
+              Bring a friend.
+            </p>
+
+            <form className="final-form" onSubmit={handleSubmit}>
+              {!submitted ? (
+                <>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="your@email.com"
+                    aria-label="Email address"
+                    required
+                  />
+
+                  <button type="submit">
+                    I&apos;M IN <span>→</span>
+                  </button>
+                </>
+              ) : (
+                <div className="success-message">
+                  ✦ YOU&apos;RE ON THE LIST. ✦
+                </div>
+              )}
+            </form>
+
+            <span className="cta-free">
+              13–18 · BEGINNER FRIENDLY · 100% FREE
+            </span>
+          </div>
+
+          <div className="cta-scribble">LET&apos;S GOOOO →</div>
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="wrap">
-          <strong>A project by the Falling Sun Team</strong>
-
-          <div className="footer-links">
-            <a href="#">Instagram</a>
-            <a href="#">WhatsApp</a>
-            <a href="#">GitHub</a>
+      {/* =========================================================
+          FOOTER
+      ========================================================== */}
+      <footer className="footer">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <span className="footer-sun">☀</span>
+            <strong>FALLING SUN</strong>
           </div>
 
-          <p>Build after dark. Ship before sunrise.</p>
+          <p>A project by the Falling Sun Team</p>
+
+          <div className="footer-links">
+            <a href="#" aria-label="Instagram">
+              INSTAGRAM ↗
+            </a>
+            <a href="#" aria-label="WhatsApp">
+              WHATSAPP ↗
+            </a>
+            <a href="#" aria-label="GitHub">
+              GITHUB ↗
+            </a>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© 2026 FALLING SUN</span>
+          <span>BUILD AFTER DARK. SHIP BEFORE SUNRISE.</span>
+          <span>DELHI-NCR, INDIA</span>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
