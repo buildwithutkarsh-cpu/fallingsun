@@ -60,6 +60,18 @@ const coOrganizers = [
     note: "Co-organizer",
   },
 ];
+const mentors = [
+  {
+    name: "Aniket Gaba",
+    initials: "AG",
+    note: "Mentor",
+  },
+  {
+    name: "Anand",
+    initials: "A",
+    note: "Mentor",
+  },
+];
 
 export default function TeamPage() {
   return (
@@ -207,6 +219,43 @@ export default function TeamPage() {
         </div>
       </section>
 
+        {/* MENTORS */}
+      <section className="team-mentors-section">
+        <div className="team-mentors-heading">
+          <p className="team-hand-label">the people we learn from</p>
+
+          <h2>
+            OUR
+            <br />
+            <span>MENTORS.</span>
+          </h2>
+
+          <p>
+            The people who guide, challenge and help us turn good ideas into
+            better ones.
+          </p>
+        </div>
+
+        <div className="team-mentors-grid">
+          {mentors.map((person, index) => (
+            <article className="team-mentor-card" key={person.name}>
+              <div className="team-mentor-tape">MENTOR</div>
+
+              <div className="team-mentor-avatar">
+                {person.initials}
+              </div>
+
+              <div className="team-mentor-info">
+                <span>0{index + 1} · FALLING SUN</span>
+                <h3>{person.name}</h3>
+                <p>{person.note}</p>
+              </div>
+
+              <div className="team-mentor-mark">✦</div>
+            </article>
+          ))}
+        </div>
+      </section>
       {/* TEAM MESSAGE */}
       <section className="team-message">
         <div className="team-message-paper">
