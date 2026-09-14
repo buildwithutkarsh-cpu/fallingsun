@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const faqs = [
@@ -83,12 +84,13 @@ export default function Home() {
           <div className="nav-links">
             <a href="#about">ABOUT</a>
             <a href="#adventure">HOW IT WORKS</a>
-            <a href="#faq">FAQ</a>
+            <Link href="/team">TEAM</Link>
+            <Link href="/faq">FAQ</Link>
           </div>
 
-          <a href="#signup" className="nav-cta">
-            SIGN UP <span>↗</span>
-          </a>
+          <Link href="/register" className="nav-cta">
+            REGISTER <span>↗</span>
+          </Link>
         </nav>
       </header>
 
@@ -138,9 +140,9 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <a href="#about" className="big-button orange-button">
-                EXPLORE THE SUN <span>↓</span>
-              </a>
+              <Link href="/register" className="big-button orange-button">
+                REGISTER NOW <span>↗</span>
+              </Link>
 
               <a href="#adventure" className="big-button white-button">
                 HOW IT WORKS <span>↗</span>
@@ -503,6 +505,85 @@ export default function Home() {
                 </details>
               ))}
             </div>
+
+            <div className="home-faq-explore reveal">
+              <p>Still got questions?</p>
+              <Link href="/faq" className="home-faq-button">
+                EXPLORE ALL QUESTIONS →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            MEET THE TEAM
+        ========================================================== */}
+        <section className="home-team-section reveal">
+          <div className="home-team-copy">
+            <p className="home-team-label">THE HUMANS BEHIND THE SUN ✦</p>
+
+            <h2>
+              MEET THE
+              <br />
+              <span>TEAM.</span>
+            </h2>
+
+            <p>
+              Falling Sun is built by a crew of students, organizers and
+              mentors who believe hackathons should feel exciting, welcoming
+              and a little bit weird.
+            </p>
+
+            <Link href="/team" className="home-team-button">
+              MEET THE CREW →
+            </Link>
+          </div>
+
+          <div className="home-team-stack">
+            <div className="home-team-card home-team-card-one">
+              <span>05</span>
+              <strong>ORGANIZERS</strong>
+              <p>Ideas · Planning · Chaos</p>
+            </div>
+
+            <div className="home-team-card home-team-card-two">
+              <span>04</span>
+              <strong>CO-ORGANIZERS</strong>
+              <p>The extended crew</p>
+            </div>
+
+            <div className="home-team-card home-team-card-three">
+              <span>02</span>
+              <strong>MENTORS</strong>
+              <p>Guidance · Experience · Support</p>
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            CODE OF CONDUCT
+        ========================================================== */}
+        <section className="home-code-section reveal">
+          <div className="home-code-icon">✦</div>
+
+          <div>
+            <p className="home-code-kicker">BEFORE YOU JOIN THE SUN</p>
+
+            <h3>
+              GOOD HACKS START WITH
+              <br />
+              <span>GOOD PEOPLE.</span>
+            </h3>
+
+            <p>
+              Falling Sun is committed to keeping the hackathon welcoming,
+              respectful and safe for everyone. Everyone attending is expected
+              to read and follow our Code of Conduct.
+            </p>
+
+            <Link href="/codeofconduct">
+              READ THE CODE OF CONDUCT →
+            </Link>
           </div>
         </section>
 
@@ -535,6 +616,10 @@ export default function Home() {
               <br />
               Bring a friend.
             </p>
+
+            <Link href="/register" className="home-register-button">
+              GO TO REGISTRATION →
+            </Link>
 
             <form className="final-form" onSubmit={handleSubmit}>
               {!submitted ? (
@@ -581,15 +666,10 @@ export default function Home() {
           <p>A project by the Falling Sun Team</p>
 
           <div className="footer-links">
-            <a href="#" aria-label="Instagram">
-              INSTAGRAM ↗
-            </a>
-            <a href="#" aria-label="WhatsApp">
-              WHATSAPP ↗
-            </a>
-            <a href="#" aria-label="GitHub">
-              GITHUB ↗
-            </a>
+            <Link href="/team">TEAM ↗</Link>
+            <Link href="/faq">FAQ ↗</Link>
+            <Link href="/codeofconduct">CODE OF CONDUCT ↗</Link>
+            <Link href="/register">REGISTER ↗</Link>
           </div>
         </div>
 
