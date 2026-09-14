@@ -2146,34 +2146,25 @@ button {
 
 .final-cta h2 {
   margin: 0;
-
   font-family: var(--space);
-
-  /*
-    FIX:
-    The old 0.68 line-height caused the giant words
-    to physically overlap each other.
-  */
-  font-size: clamp(64px, 11vw, 145px);
-
-  line-height: 0.82;
-
-  letter-spacing: -0.085em;
-
+  font-size: clamp(58px, 10vw, 130px);
+  line-height: 0.98;
+  letter-spacing: -0.075em;
   font-weight: 900;
-
   color: var(--ink);
-
   text-shadow: 6px 6px 0 var(--line);
+}
+
+.final-cta h2 br {
+  display: block;
+  content: "";
+  height: 0.08em;
 }
 
 .final-cta h2 span {
   display: inline-block;
-
   color: var(--yellow);
-
   -webkit-text-stroke: 3px var(--line);
-
   text-shadow: 6px 6px 0 var(--line);
 }
 
@@ -2884,29 +2875,25 @@ button {
      ============================================================ */
 
   .final-cta {
-    padding: 115px 14px 90px;
+    padding: 110px 14px 90px;
   }
 
   .final-cta h2 {
-    /*
-      IMPORTANT:
-      Do NOT use the old 0.68 line-height here.
-      It caused the exact overlap shown in your screenshot.
-    */
-    font-size: clamp(58px, 18vw, 105px);
-
-    line-height: 0.84;
-
-    letter-spacing: -0.075em;
-
+    font-size: clamp(52px, 17vw, 100px);
+    line-height: 0.98;
+    letter-spacing: -0.065em;
     text-shadow: 4px 4px 0 var(--line);
+  }
+
+  .final-cta h2 br {
+    height: 0.06em;
   }
 
   .final-cta h2 span {
     -webkit-text-stroke: 2px var(--line);
-
     text-shadow: 4px 4px 0 var(--line);
   }
+}
 
   .final-cta-inner > p:not(.hand-kicker) {
     margin-top: 38px;
