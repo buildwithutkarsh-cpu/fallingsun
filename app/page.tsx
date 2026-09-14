@@ -1,339 +1,368 @@
+"use client";
+
+import { useState } from "react";
+
+const steps = [
+  {
+    number: "01",
+    title: "SIGN UP",
+    text: "Save your spot at Falling Sun and get ready for a weekend of building.",
+    image: "/step-1.png",
+  },
+  {
+    number: "02",
+    title: "GRAB FRIENDS",
+    text: "Bring your friends or meet new people and form a team of 2–3.",
+    image: "/step-2.png",
+  },
+  {
+    number: "03",
+    title: "BUILD SOMETHING",
+    text: "Learn, experiment, hack, design, and turn your idea into something real.",
+    image: "/step-3.png",
+  },
+  {
+    number: "04",
+    title: "SHIP IT",
+    text: "Show everyone what you made and celebrate what you built.",
+    image: "/step-4.png",
+  },
+];
+
+const faqs = [
+  {
+    q: "What is Falling Sun?",
+    a: "Falling Sun is a free, beginner-friendly hackathon where teens come together to learn, build projects, and meet other young makers.",
+  },
+  {
+    q: "Who can participate?",
+    a: "Falling Sun is designed for teenagers. You don't need previous hackathon experience to join.",
+  },
+  {
+    q: "I've never hacked before. Can I come?",
+    a: "Absolutely. Beginners are welcome. You can learn as you build, ask questions, and work alongside other participants.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "Falling Sun is completely free.",
+  },
+  {
+    q: "What should I bring?",
+    a: "Bring yourself, a laptop, a charger, and anything else you normally use when building projects.",
+  },
+];
+
 export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
-    <>
-      {/* HERO SECTION */}
-      <div className="hero-bg min-h-screen relative flex flex-col pb-20">
-        {/* Navbar */}
-        <div className="flex justify-between items-start p-6 w-full max-w-7xl mx-auto relative z-10">
-          {/* Left Flag */}
-          <div className="bg-brand-brown text-white font-bubbly text-xl px-5 py-2 transform -rotate-6 shadow-lg border-2 border-white -ml-4 mt-2">
-            STUDENT HACKATHON
-          </div>
+    <main className="min-h-screen overflow-hidden bg-[#fff8e9] text-[#20170f]">
 
-          {/* Center Logo */}
-          <div className="text-white font-bubbly text-5xl md:text-6xl text-center absolute left-1/2 transform -translate-x-1/2 top-6 drop-shadow-lg">
+      {/* NAV */}
+      <nav className="absolute left-0 right-0 top-0 z-50">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-10">
+          <a
+            href="#top"
+            className="font-display text-2xl font-black tracking-tight text-white drop-shadow-[3px_3px_0_#20170f]"
+          >
             FALLING SUN
-          </div>
+          </a>
 
-          {/* Right Links */}
-          <div className="flex gap-3 relative z-20 mt-2">
-            <a
-              href="#"
-              className="bg-brand-btn border-2 border-brand-brown text-white font-bold py-2 px-4 rounded shadow-[3px_3px_0px_#573a27] hover:bg-[#8e5a40] transition-transform active:translate-y-1"
-            >
-              INSTAGRAM
+          <div className="hidden items-center gap-8 text-sm font-bold text-white md:flex">
+            <a href="#about" className="transition hover:-translate-y-0.5">
+              ABOUT
             </a>
-
-            <a
-              href="#"
-              className="bg-brand-btn border-2 border-brand-brown text-white font-bold py-2 px-4 rounded shadow-[3px_3px_0px_#573a27] hover:bg-[#8e5a40] transition-transform active:translate-y-1"
-            >
-              WHATSAPP
+            <a href="#steps" className="transition hover:-translate-y-0.5">
+              HOW IT WORKS
+            </a>
+            <a href="#schedule" className="transition hover:-translate-y-0.5">
+              SCHEDULE
+            </a>
+            <a href="#faq" className="transition hover:-translate-y-0.5">
+              FAQ
             </a>
           </div>
+
+          <a
+            href="#signup"
+            className="rounded-full border-2 border-[#20170f] bg-[#ffcf4a] px-5 py-2.5 text-sm font-black shadow-[3px_3px_0_#20170f] transition hover:-translate-y-0.5 hover:shadow-[5px_5px_0_#20170f]"
+          >
+            SIGN UP
+          </a>
         </div>
+      </nav>
 
-        {/* Hero Content */}
-        <div className="flex-grow flex flex-col justify-center items-center text-center px-4 mt-16 z-10">
-          <h1 className="text-white text-[5rem] md:text-[8rem] lg:text-[10rem] font-bubbly drop-shadow-xl max-w-6xl leading-none uppercase tracking-wide mb-4 mt-8">
-            FALLING SUN
-          </h1>
+      {/* HERO */}
+      <section
+        id="top"
+        className="hero-bg relative flex min-h-[760px] items-end overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
 
-          <p className="text-white text-2xl md:text-4xl font-bold mb-12 drop-shadow-lg tracking-wider uppercase bg-black bg-opacity-20 px-6 py-2 rounded-full border-2 border-white border-opacity-30">
-            For teens 13-18
-          </p>
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 md:px-10 md:pb-28">
+          <div className="max-w-5xl">
+            <p className="mb-5 inline-block rounded-full border-2 border-[#20170f] bg-[#fff8e9] px-4 py-2 text-sm font-black uppercase shadow-[3px_3px_0_#20170f]">
+              A teen hackathon
+            </p>
 
-          {/* Email Form */}
-          <div className="wood-peg-container bg-brand-tan border-[4px] border-brand-brown rounded-md flex p-2 w-full max-w-2xl shadow-[6px_6px_0px_#573a27] mb-6 z-20">
-            <input
-              type="email"
-              placeholder="you@fallingsun.com"
-              className="flex-grow bg-transparent outline-none text-brand-brown placeholder-brand-brown placeholder-opacity-60 font-bold text-xl px-4"
-            />
-
-            <button className="btn px-6 md:px-8 py-3 text-lg md:text-xl tracking-wide">
-              START NOW
-            </button>
-          </div>
-
-          {/* Bottom Badge */}
-          <div className="bg-brand-brown text-white border-[3px] border-brand-brown shadow-[4px_4px_0px_rgba(0,0,0,0.3)] rounded-lg flex items-center p-3 gap-4 mt-8 z-20">
-            <span className="font-bold text-lg px-2">
-              See what teens are building
-            </span>
-
-            <div className="flex gap-2">
-              <div className="bg-white p-1 pb-4 border border-gray-300 transform -rotate-3 w-12 h-14">
-                <div className="w-full h-full bg-gray-200 border border-gray-400 border-dashed" />
-              </div>
-
-              <div className="bg-white p-1 pb-4 border border-gray-300 transform rotate-2 w-12 h-14">
-                <div className="w-full h-full bg-blue-200 border border-gray-400 border-dashed" />
-              </div>
-
-              <div className="bg-white p-1 pb-4 border border-gray-300 transform -rotate-1 w-12 h-14">
-                <div className="w-full h-full bg-yellow-200 border border-gray-400 border-dashed" />
-              </div>
-
-              <div className="bg-white p-1 pb-4 border border-gray-300 transform rotate-3 w-12 h-14">
-                <div className="w-full h-full bg-red-200 border border-gray-400 border-dashed" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* WHAT IS FALLING SUN */}
-      <section className="max-w-6xl mx-auto px-6 mt-20 relative mb-32">
-        <div className="bg-brand-brown text-white rounded-xl border-[4px] border-brand-brown p-10 md:p-16 flex flex-col md:flex-row relative">
-          {/* Left Text */}
-          <div className="md:w-3/5 pr-8 z-10">
-            <h2 className="text-4xl md:text-5xl font-bubbly text-white mb-[-10px]">
-              WHAT IS
-            </h2>
-
-            <h1 className="text-6xl md:text-8xl font-bubbly text-white mb-8">
-              FALLING SUN?
+            <h1 className="font-display text-[clamp(5rem,17vw,13rem)] font-black leading-[0.76] tracking-[-0.07em] text-white [text-shadow:6px_6px_0_#20170f]">
+              FALLING
+              <br />
+              SUN
             </h1>
 
-            <p className="text-2xl font-bold mb-8 leading-snug">
-              Falling Sun is India&apos;s premier
-              <br />
-
-              <mark className="bg-brand-green text-white px-2">
-                Under-19 retro-tech hackathon
-              </mark>
-
-              <br />
-              happening live in Delhi-NCR.
-            </p>
-
-            <p className="text-2xl font-bold leading-snug mb-20 md:mb-12">
-              Bring your ideas to life during an
-              <br />
-
-              <mark className="bg-brand-green text-white px-2">
-                intense 24-hour sprint
-              </mark>
-
-              , with hardware
-              <br />
-              and resources funded by us!
-            </p>
-          </div>
-
-          {/* Right Image Stack */}
-          <div className="md:w-2/5 relative mt-10 md:mt-0 flex flex-col items-center justify-center min-h-[300px]">
-            <div className="relative w-full max-w-sm h-full">
-              <div className="absolute inset-0 bg-white border border-gray-300 p-2 pb-12 shadow-lg transform rotate-6 z-0">
-                <div className="w-full h-full bg-gray-200" />
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="rounded-2xl border-2 border-[#20170f] bg-[#fff8e9] px-6 py-4 shadow-[5px_5px_0_#20170f]">
+                <p className="text-xs font-black uppercase tracking-widest text-[#795d43]">
+                  Build. Learn. Meet people.
+                </p>
+                <p className="mt-1 text-lg font-bold">
+                  A weekend to make something awesome.
+                </p>
               </div>
 
-              <div className="absolute inset-0 bg-white border border-gray-300 p-2 pb-12 shadow-lg transform -rotate-3 z-10">
-                <div className="w-full h-full bg-gray-300" />
-              </div>
-
-              <div className="absolute inset-0 bg-white border border-gray-300 p-2 pb-12 shadow-lg transform rotate-2 z-20 flex flex-col">
-                <div className="w-full flex-grow border border-dashed border-gray-400 flex items-center justify-center text-gray-500 font-comic text-xl bg-gray-100">
-                  Photo Placeholder
-                </div>
-              </div>
+              <a
+                id="signup"
+                href="#register"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-[#20170f] bg-[#ffcf4a] px-8 py-5 text-lg font-black shadow-[5px_5px_0_#20170f] transition hover:-translate-y-1 hover:shadow-[7px_7px_0_#20170f]"
+              >
+                I'M IN →
+              </a>
             </div>
+          </div>
+        </div>
 
-            <p className="mt-[18rem] text-sm underline text-brand-tan text-center w-full z-30 font-bold relative bottom-4">
-              200+ teens in Delhi NCR, building projects
+        <div className="absolute bottom-8 right-8 hidden rotate-3 rounded-xl border-2 border-[#20170f] bg-white px-4 py-3 text-center shadow-[4px_4px_0_#20170f] md:block">
+          <p className="font-display text-xl font-black">13–18</p>
+          <p className="text-xs font-bold uppercase">years old</p>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="mx-auto max-w-6xl px-5 py-28 md:px-10">
+        <div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr] md:items-start">
+          <div>
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.25em] text-[#e06b35]">
+              Dear hackers,
             </p>
+
+            <h2 className="font-display text-6xl font-black leading-[0.85] tracking-tight md:text-8xl">
+              MAKE
+              <br />
+              SOMETHING
+              <br />
+              COOL.
+            </h2>
           </div>
 
-          {/* Beginner Box */}
-          <div className="absolute -bottom-10 left-10 sketch-border bg-white text-brand-brown p-6 max-w-sm z-30">
-            <p className="font-bold text-xl mb-1">
-              We are{" "}
-              <span className="font-black text-2xl">
-                Beginner to Elite
-              </span>{" "}
-              friendly!
+          <div className="space-y-6 text-lg leading-8 md:text-xl">
+            <p>
+              Welcome to <strong>Falling Sun</strong>, a place for curious
+              teenagers who want to turn ideas into real things.
             </p>
 
-            <p className="text-lg leading-tight font-semibold text-gray-600">
-              Whether it&apos;s your first project or advanced systems, our
-              mentors have your back!
+            <p>
+              You don't have to be an expert. You don't have to know exactly
+              what you're building. Just show up ready to learn, experiment,
+              and make something you're proud of.
+            </p>
+
+            <p>
+              Bring your friends. Meet new people. Spend a weekend building
+              something that didn't exist before.
+            </p>
+
+            <p className="font-display text-3xl font-black">
+              See you at Falling Sun. ☀️
             </p>
           </div>
         </div>
       </section>
 
-      {/* WHAT HAPPENS */}
-      <section className="max-w-6xl mx-auto px-6 mt-32 flex flex-col md:flex-row gap-12 items-center mb-32">
-        {/* Comic Panels */}
-        <div className="md:w-1/2 w-full pl-6">
-          <div className="comic-panel">
-            <div className="comic-bubble">01. SPARK</div>
+      {/* STEPS */}
+      <section
+        id="steps"
+        className="border-y-2 border-[#20170f] bg-[#f2a93b] px-5 py-24 md:px-10"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 max-w-2xl">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.25em]">
+              HOW IT WORKS
+            </p>
 
-            <div className="h-32 bg-brand-tan opacity-30 flex items-center justify-center mt-4 border-2 border-dashed border-brand-brown">
-              <span className="font-comic text-2xl text-brand-brown">
-                Idea &amp; Concept
-              </span>
-            </div>
+            <h2 className="font-display text-6xl font-black leading-[0.85] tracking-tight md:text-8xl">
+              FOUR STEPS.
+              <br />
+              ONE WEEKEND.
+            </h2>
           </div>
 
-          <div className="comic-panel">
-            <div className="comic-bubble">02. SHIP</div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {steps.map((step) => (
+              <article
+                key={step.number}
+                className="group overflow-hidden rounded-[2rem] border-2 border-[#20170f] bg-[#fff8e9] shadow-[6px_6px_0_#20170f]"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#e7d6b5]">
+                  <img
+                    src={step.image}
+                    alt=""
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
 
-            <div className="h-32 bg-brand-tan opacity-30 flex items-center justify-center mt-4 border-2 border-dashed border-brand-brown">
-              <span className="font-comic text-2xl text-brand-brown">
-                Web, Mobile, AI, Hardware
-              </span>
-            </div>
-          </div>
+                  <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#20170f] bg-[#ffcf4a] font-display text-xl font-black shadow-[3px_3px_0_#20170f]">
+                    {step.number}
+                  </div>
+                </div>
 
-          <div className="comic-panel">
-            <div className="comic-bubble">03. FLEX</div>
+                <div className="p-7 md:p-9">
+                  <h3 className="font-display text-4xl font-black">
+                    {step.title}
+                  </h3>
 
-            <div className="h-32 bg-brand-tan opacity-30 flex items-center justify-center mt-4 border-2 border-dashed border-brand-brown">
-              <span className="font-comic text-2xl text-brand-brown">
-                Live Demonstration
-              </span>
-            </div>
+                  <p className="mt-3 max-w-lg text-lg leading-7 text-[#604c3b]">
+                    {step.text}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Right Box */}
-        <div className="md:w-1/2 w-full relative">
-          <div className="bg-brand-blue border-[4px] border-brand-brown shadow-[8px_8px_0px_#573a27] p-10 md:p-12 text-white">
-            <h2 className="text-5xl font-bubbly mb-8">
-              WHAT HAPPENS
-            </h2>
-
-            <ol className="text-2xl font-bold space-y-4 list-decimal pl-8 leading-snug">
-              <li>Begin with an idea or prompt.</li>
-              <li>Transform ideas into prototypes.</li>
-              <li>Level up with workshops &amp; mentors.</li>
-              <li>Present your project through a live demo!</li>
-              <li>Publish + Share online.</li>
-              <li>Leave with new skills and connections.</li>
-            </ol>
-          </div>
-
-          <div className="absolute -bottom-10 right-10 sketch-border bg-white text-brand-brown p-5 max-w-[280px] z-20">
-            <p className="font-bold text-lg leading-tight">
-              As long as you build something during the 24 hours, you will get
-              a certificate and cool merch!
+      {/* SCHEDULE */}
+      <section id="schedule" className="px-5 py-28 md:px-10">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-16">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.25em] text-[#e06b35]">
+              THE PLAN
             </p>
+
+            <h2 className="font-display text-7xl font-black leading-[0.8] md:text-9xl">
+              SCHEDULE
+            </h2>
           </div>
+
+          <div className="space-y-3">
+            {[
+              ["09:00", "Doors open"],
+              ["10:00", "Opening ceremony"],
+              ["10:30", "Workshops"],
+              ["12:30", "Lunch"],
+              ["14:00", "Build time"],
+              ["17:00", "Fun stuff"],
+              ["18:00", "Show & tell"],
+            ].map(([time, event], i) => (
+              <div
+                key={event}
+                className={`grid grid-cols-[90px_1fr] items-center rounded-2xl border-2 border-[#20170f] px-5 py-5 shadow-[3px_3px_0_#20170f] md:grid-cols-[130px_1fr] md:px-7 ${
+                  i % 2 === 0 ? "bg-[#fff8e9]" : "bg-[#f7e5c2]"
+                }`}
+              >
+                <span className="font-display text-xl font-black md:text-2xl">
+                  {time}
+                </span>
+
+                <span className="text-lg font-bold md:text-xl">
+                  {event}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section
+        id="register"
+        className="relative overflow-hidden border-y-2 border-[#20170f] bg-[#e86f3d] px-5 py-28 text-center md:px-10"
+      >
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <p className="mb-5 text-sm font-black uppercase tracking-[0.3em]">
+            READY?
+          </p>
+
+          <h2 className="font-display text-7xl font-black leading-[0.78] tracking-tight md:text-[9rem]">
+            LET'S
+            <br />
+            BUILD.
+          </h2>
+
+          <p className="mx-auto mt-8 max-w-xl text-lg font-bold leading-7 md:text-xl">
+            Grab your laptop, bring your ideas, and come hang out with us.
+          </p>
+
+          <a
+            href="#top"
+            className="mt-8 inline-flex rounded-2xl border-2 border-[#20170f] bg-[#ffcf4a] px-9 py-5 text-lg font-black shadow-[5px_5px_0_#20170f] transition hover:-translate-y-1 hover:shadow-[7px_7px_0_#20170f]"
+          >
+            SIGN UP FOR FALLING SUN →
+          </a>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto px-6 mt-32 mb-32">
-        <h2 className="text-6xl font-bubbly text-brand-brown mb-8">
-          FAQ
-        </h2>
+      <section id="faq" className="px-5 py-28 md:px-10">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-14">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.25em] text-[#e06b35]">
+              QUESTIONS?
+            </p>
 
-        <div className="border-t border-brand-brown border-opacity-30">
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              Can I join if I&apos;m a beginner?
+            <h2 className="font-display text-7xl font-black leading-[0.8] md:text-9xl">
+              FAQ
+            </h2>
+          </div>
 
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
+          <div className="space-y-3">
+            {faqs.map((faq, index) => {
+              const open = openFaq === index;
 
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              Absolutely! Falling Sun is beginner to elite friendly. Mentors
-              and zero-judgment zones are available to help you build your very
-              first project.
-            </div>
-          </details>
+              return (
+                <button
+                  key={faq.q}
+                  onClick={() => setOpenFaq(open ? null : index)}
+                  className="w-full rounded-2xl border-2 border-[#20170f] bg-[#fff8e9] p-6 text-left shadow-[3px_3px_0_#20170f] transition hover:-translate-y-0.5 md:p-7"
+                >
+                  <div className="flex items-center justify-between gap-6">
+                    <span className="font-display text-2xl font-black md:text-3xl">
+                      {faq.q}
+                    </span>
 
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              Can I work in teams?
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ffcf4a] text-xl font-black">
+                      {open ? "−" : "+"}
+                    </span>
+                  </div>
 
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
-
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              Yes! You can participate solo or form a team of up to 4 members.
-            </div>
-          </details>
-
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              Am I eligible?
-
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
-
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              Falling Sun is exclusively for high schoolers and teen hackers
-              (ages 13–18). Participants under 18 require signed
-              parent/guardian consent.
-            </div>
-          </details>
-
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              Is this free?
-
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
-
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              100% Free Experience. Zero entry fees. Venue access, Wi-Fi,
-              hardware kits, meals, and merch are completely covered.
-            </div>
-          </details>
-
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              What are the Project Requirements?
-
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
-
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              Projects must be original work created during the hackathon.
-              Source code must be on a public GitHub. You retain 100%
-              ownership!
-            </div>
-          </details>
-
-          <details className="group border-b border-brand-brown py-6">
-            <summary className="flex justify-between items-center text-2xl font-bold text-brand-brown hover:text-black">
-              Can I use AI?
-
-              <span className="text-3xl font-normal group-open:rotate-45 transition-transform">
-                +
-              </span>
-            </summary>
-
-            <div className="mt-4 text-xl text-gray-700 font-semibold pr-10">
-              Yes, but AI-assisted work is limited to 40% of the project.
-              Descriptions and submissions must be written by the participants
-              themselves.
-            </div>
-          </details>
+                  {open && (
+                    <p className="mt-5 max-w-3xl text-lg leading-7 text-[#604c3b]">
+                      {faq.a}
+                    </p>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="mt-16 py-12 px-6 bg-brand-cream border-t-2 border-brand-brown border-opacity-20 text-brand-brown font-bold text-center">
-        <p className="text-xl">A project by the Falling Sun Team</p>
+      <footer className="border-t-2 border-[#20170f] bg-[#20170f] px-5 py-12 text-[#fff8e9] md:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-display text-5xl font-black">FALLING SUN</h2>
+            <p className="mt-3 max-w-md text-sm leading-6 text-[#d7c6ae]">
+              A teen hackathon built around learning, creativity, friendship,
+              and shipping things you care about.
+            </p>
+          </div>
 
-        <p className="mt-2 opacity-80">
-          Build after dark. Ship before sunrise.
-        </p>
+          <div className="text-sm text-[#d7c6ae]">
+            <p>Made with ♥ by teenagers.</p>
+            <p className="mt-1">© 2026 Falling Sun</p>
+          </div>
+        </div>
       </footer>
-    </>
+    </main>
   );
 }
