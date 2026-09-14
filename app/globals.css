@@ -3548,3 +3548,177 @@ button {
     grid-column: 1 / -1;
   }
 }
+/* =========================================================
+   MENTORS
+   ========================================================= */
+
+.team-mentors-section {
+  width: min(1180px, calc(100% - 32px));
+  margin: 140px auto 0;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.team-mentors-heading h2 {
+  margin: 0;
+  font-family: var(--space);
+  font-size: clamp(54px, 8vw, 92px);
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+  font-weight: 950;
+}
+
+.team-mentors-heading h2 span {
+  color: var(--blue);
+  -webkit-text-stroke: 1px var(--line);
+  text-shadow: 4px 4px 0 var(--line);
+}
+
+.team-mentors-heading > p:last-child {
+  max-width: 340px;
+  margin: 25px 0 0;
+  font-family: var(--dm);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.team-mentors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.team-mentor-card {
+  min-height: 330px;
+  padding: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--paper);
+  border: 3px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 7px 7px 0 var(--line);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.team-mentor-card:first-child {
+  transform: rotate(-2deg);
+}
+
+.team-mentor-card:last-child {
+  transform: rotate(2deg);
+  background: var(--yellow);
+}
+
+.team-mentor-card:hover {
+  transform: translateY(-7px) rotate(0deg);
+}
+
+.team-mentor-tape {
+  position: absolute;
+  top: 17px;
+  right: -25px;
+  padding: 7px 30px;
+  background: var(--orange);
+  border: 2px solid var(--line);
+  transform: rotate(7deg);
+  font-family: var(--space);
+  font-size: 8px;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+}
+
+.team-mentor-avatar {
+  width: 115px;
+  height: 115px;
+  display: grid;
+  place-items: center;
+  margin-top: 20px;
+  background: var(--blue);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 5px 5px 0 var(--line);
+  font-family: var(--space);
+  font-size: 36px;
+  font-weight: 950;
+}
+
+.team-mentor-card:last-child .team-mentor-avatar {
+  background: var(--orange);
+}
+
+.team-mentor-info {
+  margin-top: 25px;
+}
+
+.team-mentor-info > span {
+  font-family: var(--space);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.team-mentor-info h3 {
+  margin: 7px 0 5px;
+  font-family: var(--space);
+  font-size: 29px;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 950;
+}
+
+.team-mentor-info p {
+  margin: 0;
+  font-family: var(--hand);
+  font-size: 20px;
+}
+
+.team-mentor-mark {
+  position: absolute;
+  right: 22px;
+  bottom: 17px;
+  font-size: 25px;
+}
+
+/* MENTORS — MOBILE */
+
+@media (max-width: 850px) {
+  .team-mentors-section {
+    margin-top: 100px;
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+}
+
+@media (max-width: 560px) {
+  .team-mentors-section {
+    width: calc(100% - 24px);
+  }
+
+  .team-mentors-heading h2 {
+    font-size: 54px;
+  }
+
+  .team-mentors-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .team-mentor-card {
+    min-height: 300px;
+  }
+
+  .team-mentor-card:first-child,
+  .team-mentor-card:last-child {
+    transform: none;
+  }
+
+  .team-mentor-info h3 {
+    font-size: 26px;
+  }
+}
